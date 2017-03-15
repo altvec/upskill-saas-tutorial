@@ -3,7 +3,7 @@
 // Wait for document ready
 $(document).on('turbolinks:load', function() {
   var theForm = $('#pro_form');
-  var submitBtn = $('#form-submit-btn');
+  var submitBtn = $('#form-signup-btn');
   // Set stripe public key
   Stripe.setPublishableKey($('meta[name="stripe-key"]').attr('content'));
   // When user clicks form submit button
@@ -14,7 +14,7 @@ $(document).on('turbolinks:load', function() {
     
     // Collect the credit card fields
     var ccNum = $('#card_number').val(),
-        cvcNum = $('#').val(),
+        cvcNum = $('#card_code').val(),
         expMonth = $('#card_month').val(),
         expYear = $('#card_year').val();
     
@@ -59,6 +59,6 @@ $(document).on('turbolinks:load', function() {
     // Inject card token as hidden field into form 
     theForm.append($('<input type="hidden" name="user[stripe_card_token]">').val(token));
     // Submit form to our Rails app
-    theForm.get(0).submit;
+    theForm.get(0).submit();
   }
 });
